@@ -50,7 +50,7 @@ apt-get install -y kubelet kubeadm kubectl
 apt-mark hold kubelet kubeadm kubectl   
    
    
-## systemd, cgroup 맞추기(k8s v1.22~)
+c.f.) systemd, cgroup 맞추기(k8s v1.22~)   
    
 
 mkdir /etc/docker   
@@ -73,7 +73,10 @@ systemctl start kubelet
 systemctl enable kubelet   
 
 
-2. 한번에 다 하기   
+
+
+
+2. 한번에 다 하기<아직 작성중>   
 ### docker 셋팅 (UTM - ubuntu 20.04 LTS 에서 도커 사전 설치했으면 k8s 셋팅으로 넘어가도 됨)
  
 ### k8s 셋팅   
