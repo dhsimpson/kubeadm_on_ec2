@@ -1,121 +1,60 @@
-# kubeadm_on_vm
-1. 여긴 순서대로 (아랫쪽에 한번에 하는 버전)   
-
-install docker   
-sudo apt-get update   
+참고 : [kubeadm, ec2 로 k8s 클러스터 구축하기]( https://velog.io/@koo8624/Kubernetes-AWS-EC2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%97%90-Kubernetes-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0)   
+참고 : [k8s 1.22 버전 이상인 경우 도커와 cgroup 매칭](https://kubernetes.io/ko/docs/setup/production-environment/_print/#%EB%8F%84%EC%BB%A4)   
    
-sudo apt-get install -y \   
-    ca-certificates \   
-    curl \   
-    gnupg \   
-    lsb-release   
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg   
+# ec2
+ubuntu 20.04 LTS(x86) > t2.medium(spot instance)   
+security group   
+ - TCP, port : 6443 ( k8s-api server ) / for master node
+ - TCP, port : 2379 - 2380 ( k8s etcd ) / for master node
+ - TCP, port : 22 (SSH)
+ - TCP, port : 10250 ( k8s kubelet )
    
-echo \   
-  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \   
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null   
+# disable swap   
+ - $ sudo su # root 권한으로 실행
+ - $ swapoff -a
+ - $ echo 0 > /proc/sys/vm/swappiness
+ - $ sed -e '/swap/ s/^#*/#/' -i /etc/fstab
+ - $ exit
    
-sudo apt-get update   
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io   
+# docker
+ - sudo apt-get update
+ - sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+ - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+ - echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+ - sudo apt-get update
+ - sudo apt-get install docker-ce docker-ce-cli containerd.io
+ - sudo mkdir /etc/docker
+ - cat <<EOF | sudo tee /etc/docker/daemon.json
+   {
+     "exec-opts": ["native.cgroupdriver=systemd"],
+     "log-driver": "json-file",
+     "log-opts": {
+       "max-size": "100m"
+     },
+     "storage-driver": "overlay2"
+   }
+   EOF
+ - sudo systemctl enable docker
+ - sudo systemctl daemon-reload
+ - sudo systemctl restart docker
    
-swap 중지 시키기   
-sudo passwd root   
-> root   
-> root   
-   
-su -   
-swapoff -a && sed -i '/swap/s/^/#/' /etc/fstab   
-cat <<EOF | tee /etc/modules-load.d/k8s.conf   
-br_netfilter   
-EOF   
-   
-cat <<EOF | tee /etc/sysctl.d/k8s.conf   
-net.bridge.bridge-nf-call-ip6tables = 1   
-net.bridge.bridge-nf-call-iptables = 1   
-EOF   
-sysctl --system   
-   
-방화벽 disable   
-   
-systemctl stop firewalld    
-systemctl disable firewalld   
-   
-kubectl,adm,let 설치   
-apt-get update   
-apt-get install -y apt-transport-https ca-certificates curl   
-curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg   
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list   
-apt-get update   
-apt-get install -y kubelet kubeadm kubectl   
-apt-mark hold kubelet kubeadm kubectl   
-   
-   
-c.f.) systemd, cgroup 맞추기(k8s v1.22~)   
-   
-
-mkdir /etc/docker   
-cat <<EOF | sudo tee /etc/docker/daemon.json   
-{   
-  "exec-opts": ["native.cgroupdriver=systemd"],   
-  "log-driver": "json-file",   
-  "log-opts": {   
-    "max-size": "100m"   
-  },   
-  "storage-driver": "overlay2"   
-}   
-EOF   
-   
-systemctl enable docker   
-systemctl daemon-reload   
-systemctl restart docker   
-   
-systemctl start kubelet   
-systemctl enable kubelet   
-
-
-
-
-
-2. 한번에 다 하기<아직 작성중>   
-### docker 셋팅 (UTM - ubuntu 20.04 LTS 에서 도커 사전 설치했으면 k8s 셋팅으로 넘어가도 됨)
- 
-### k8s 셋팅   
-
-swap 중지 시키기   
-sudo passwd root   
-> root   
-> root   
-   
-   
-<아래를 .sh 파일로 만들면 됨>   
-   
-su -   
-swapoff -a && sed -i '/swap/s/^/#/' /etc/fstab   
-cat <<EOF | tee /etc/modules-load.d/k8s.conf   
-br_netfilter   
-EOF   
-   
-cat <<EOF | tee /etc/sysctl.d/k8s.conf   
-net.bridge.bridge-nf-call-ip6tables = 1   
-net.bridge.bridge-nf-call-iptables = 1   
-EOF   
-sysctl --system   
-   
-방화벽 disable   
-   
-systemctl stop firewalld    
-systemctl disable firewalld   
-   
-kubectl,adm,let 설치   
-apt-get update   
-apt-get install -y apt-transport-https ca-certificates curl   
-curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg   
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list   
-apt-get update   
-apt-get install -y kubelet kubeadm kubectl   
-apt-mark hold kubelet kubeadm kubectl   
-   
-systemctl start kubelet   
-systemctl enable kubelet   
-
-
+# k8s
+ - sudo apt-get update
+ - sudo apt-get install -y apt-transport-https ca-certificates curl
+ - sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+ - echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+ - sudo apt-get update
+ - sudo apt-get install -y kubelet kubeadm kubectl
+ - sudo apt-mark hold kubelet kubeadm kubectl
+ - sudo kubeadm init \
+	--pod-network-cidr=192.168.0.0/16 \
+    --control-plane-endpoint=<ec2-ip> \
+    --apiserver-cert-extra-sans=<ec2-ip> \
+      
+ c.f. 사전에 sudo kubeadm init 을 한 적이 있다면 sudo kubeadm reset 해줘야 에러 발생 안 함   
