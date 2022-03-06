@@ -69,4 +69,7 @@ security group
 ### kubeadm init 했을 때, 마지막 로그에 join 명령어가 나온다.
  - kubeadm join <ip>:<port> --token <token> \
 	--discovery-token-ca-cert-hash sha256:<hash>
-
+	
+	
+단, master 노드의 $HOME/.kube/config 파일을 worker 노드의 $HOME/.kube/config 에 복붙한 후
+ - sudo chown $(id -u):$(id -g) $HOME/.kube/config 해준다
