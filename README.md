@@ -62,3 +62,11 @@ security group
  - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
  - sudo chown $(id -u):$(id -g) $HOME/.kube/config
  - kubectl apply -f https://projectcalico.docs.tigera.io/manifests/calico.yaml
+	
+	
+	
+#worker node : join k8s as cluster
+### kubeadm init 했을 때, 마지막 로그에 join 명령어가 나온다.
+ - kubeadm join <ip>:<port> --token <token> \
+	--discovery-token-ca-cert-hash sha256:<hash>
+
