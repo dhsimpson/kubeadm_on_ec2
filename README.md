@@ -58,3 +58,6 @@ security group
     --apiserver-cert-extra-sans=<ec2-ip> \
       
  c.f. 사전에 sudo kubeadm init 을 한 적이 있다면 sudo kubeadm reset 해줘야 에러 발생 안 함   
+ - mkdir -p $HOME/.kube
+ - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+ - sudo chown $(id -u):$(id -g) $HOME/.kube/config
