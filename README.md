@@ -1,6 +1,7 @@
 참고 : [kubeadm, ec2 로 k8s 클러스터 구축하기]( https://velog.io/@koo8624/Kubernetes-AWS-EC2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%97%90-Kubernetes-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0)   
 참고 : [k8s 1.22 버전 이상인 경우 도커와 cgroup 매칭](https://kubernetes.io/ko/docs/setup/production-environment/_print/#%EB%8F%84%EC%BB%A4)   
-   
+참고 : [k8s kubeadm, ec2 로 마스터 & 워커 노드 구축](https://jonnung.dev/kubernetes/2020/03/07/create-kubernetes-cluster-using-kubeadm-on-aws-ec2-part2/)   
+
 # ec2
 ubuntu 20.04 LTS(x86) > t2.medium(spot instance)   
 security group   
