@@ -7,6 +7,7 @@ ubuntu 20.04 LTS(x86) > t2.medium(spot instance)
 security group   
  - TCP, port : 6443 ( k8s-api server ) / for master node
  - TCP, port : 2379 - 2380 ( k8s etcd ) / for master node
+ - TCP, port : 30000-32767 ( k8s service ) / for master node
  - TCP, port : 22 (SSH)
  - TCP, port : 10250 ( k8s kubelet )
    
