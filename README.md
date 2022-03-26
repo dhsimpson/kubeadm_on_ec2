@@ -2,6 +2,8 @@
 참고 : [k8s 1.22 버전 이상인 경우 도커와 cgroup 매칭](https://kubernetes.io/ko/docs/setup/production-environment/_print/#%EB%8F%84%EC%BB%A4)   
 참고 : [k8s kubeadm, ec2 로 마스터 & 워커 노드 구축](https://jonnung.dev/kubernetes/2020/03/07/create-kubernetes-cluster-using-kubeadm-on-aws-ec2-part2/)   
 
+# C.F. 이 md file 의 커멘드는 indent 등의 문제가 있어 정상 실행되지 않는다. k8s 설치 흐름 보는 용도로 쓰고 실제 커멘드는 quick-install.sh 파일을 복붙해 사용하자
+
 # ec2
 ubuntu 20.04 LTS(x86) > t2.medium(spot instance)   
 security group   
