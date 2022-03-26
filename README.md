@@ -1,6 +1,7 @@
 참고 : [kubeadm, ec2 로 k8s 클러스터 구축하기]( https://velog.io/@koo8624/Kubernetes-AWS-EC2-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EC%97%90-Kubernetes-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0)   
 참고 : [k8s 1.22 버전 이상인 경우 도커와 cgroup 매칭](https://kubernetes.io/ko/docs/setup/production-environment/_print/#%EB%8F%84%EC%BB%A4)   
 참고 : [k8s kubeadm, ec2 로 마스터 & 워커 노드 구축](https://jonnung.dev/kubernetes/2020/03/07/create-kubernetes-cluster-using-kubeadm-on-aws-ec2-part2/)   
+참고 : [k8s ec2/eks 에서 kubectl 사용하도록 만들기](https://twofootdog.tistory.com/82)
 
 # C.F. 이 md file 의 커멘드는 indent 등의 문제가 있어 정상 실행되지 않는다. k8s 설치 흐름 보는 용도로 쓰고 실제 커멘드는 quick-install.sh 파일을 복붙해 사용하자
 
@@ -62,6 +63,7 @@ security group
     --apiserver-cert-extra-sans=<ec2-ip> \
       
  c.f. 사전에 sudo kubeadm init 을 한 적이 있다면 sudo kubeadm reset 해줘야 에러 발생 안 함   
+# master node에서 kubectl 사용할 수 있도록 하기	
  - mkdir -p $HOME/.kube
  - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
  - sudo chown $(id -u):$(id -g) $HOME/.kube/config
