@@ -58,17 +58,14 @@ security group
  - sudo apt-get install -y kubelet kubeadm kubectl
  - sudo apt-mark hold kubelet kubeadm kubectl
  - sudo kubeadm init \
-	--pod-network-cidr=192.168.0.0/16 \
-    --control-plane-endpoint=<ec2-ip> \
-    --apiserver-cert-extra-sans=<ec2-ip> \
+	--pod-network-cidr=10.244.0.0/16 
       
  c.f. 사전에 sudo kubeadm init 을 한 적이 있다면 sudo kubeadm reset 해줘야 에러 발생 안 함   
 # master node에서 kubectl 사용할 수 있도록 하기	
  - mkdir -p $HOME/.kube
  - sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
  - sudo chown $(id -u):$(id -g) $HOME/.kube/config
- - kubectl apply -f https://projectcalico.docs.tigera.io/manifests/calico.yaml
-	
+ - kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
 	
 	
 #worker node : join k8s as cluster
