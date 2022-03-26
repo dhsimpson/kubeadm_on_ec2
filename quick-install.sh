@@ -1,4 +1,4 @@
-sudo su # root 권한으로 실행
+sudo su
 
 swapoff -a
 
