@@ -61,9 +61,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 # master node 만
 sudo kubeadm init \
---pod-network-cidr=192.168.0.0/16 \
---control-plane-endpoint=<ec2 프라이빗 ipv4 주소> \
---apiserver-cert-extra-sans=<ec2 프라이빗 ipv4 주소>
+--pod-network-cidr=10.244.0.0/16
 
 mkdir -p $HOME/.kube
 
@@ -71,7 +69,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-kubectl apply -f https://projectcalico.docs.tigera.io/manifests/calico.yaml
+kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
 
 # worker node 만, master node 에서 kubeadm init 결과 나옴
 kubeadm join <master node ec2 프라이빗 ipv4 주소>:6443 --token <token값> \
