@@ -2,6 +2,7 @@
 참고 : [k8s 1.22 버전 이상인 경우 도커와 cgroup 매칭](https://kubernetes.io/ko/docs/setup/production-environment/_print/#%EB%8F%84%EC%BB%A4)   
 참고 : [k8s kubeadm, ec2 로 마스터 & 워커 노드 구축](https://jonnung.dev/kubernetes/2020/03/07/create-kubernetes-cluster-using-kubeadm-on-aws-ec2-part2/)   
 참고 : [kubeadm join 안 될 때는 join 키를 새로 생성](https://stackoverflow.com/questions/65588628/node-cannot-join-cluster-k8s-onprem?rq=1)   
+참고 : [AWS EC2 에서 calico 사용하려면 해야 하는 셋팅들 -> calico 대신 flannel쓰는 게 정신상 이롭다](https://stackoverflow.com/questions/60806708/kubernetes-with-calico-on-aws-cannot-ping-pods-on-on-different-nodes)
 
 # C.F. 이 md file 의 커멘드는 indent 등의 문제가 있어 정상 실행되지 않는다. k8s 설치 흐름 보는 용도로 쓰고 실제 커멘드는 quick-install.sh 파일을 복붙해 사용하자
 
