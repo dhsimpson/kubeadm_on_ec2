@@ -71,7 +71,7 @@ security group
 	
 #worker node : join k8s as cluster
 ### kubeadm init 했을 때, 마지막 로그에 join 명령어가 나온다.
- - kubeadm join <ip>:<port> --token <token> \
+ - sudo kubeadm join <ip>:<port> --token <token> \
 	--discovery-token-ca-cert-hash sha256:<hash>
 	
 	
