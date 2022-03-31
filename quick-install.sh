@@ -74,7 +74,7 @@ kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube
 
 # helm 으로 ingress 설치
 helm install nginx-ingress nginx-stable/nginx-ingress --set rbac.create=true --set controller.service.loadBalancerIP=<ec2-master-pub-ip>
-kubectl patch svc nginx-ingress-nginx-ingress -p '{"spec":{"externalIPs":["<ec2-master-pub-ip>"]}}'
+kubectl -n ingress-nginx patch svc ingress-nginx-controller -p '{"spec":{"externalIPs":["<ec2-master-pub-ip>"]}}'
 
 # worker node 만, master node 에서 kubeadm init 결과 나옴
 sudo kubeadm join <master node ec2 프라이빗 ipv4 주소>:6443 --token <token값> \
