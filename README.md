@@ -6,7 +6,7 @@
 참고 : [nginx-ingress 설치](https://kubernetes.github.io/ingress-nginx/deploy/#bare-metal-clusters)   
 참고 : [nginx-ingress 설치 후 ing.yml apply 시 인증에러 뜰 때](https://ikcoo.tistory.com/137)   
 참고 : [nginx-ingress 최신버전 example](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengsettingupingresscontroller.htm)   
-
+참고 : [metalLb example](https://www.youtube.com/watch?v=2SmYjj-GFnE)   
 
 # C.F. 이 md file 의 커멘드는 indent 등의 문제가 있어 정상 실행되지 않는다. k8s 설치 흐름 보는 용도로 쓰고 실제 커멘드는 quick-install.sh 파일을 복붙해 사용하자
 
