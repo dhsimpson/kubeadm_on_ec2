@@ -5,7 +5,7 @@
 참고 : [AWS EC2 에서 calico 사용하려면 해야 하는 셋팅들 -> calico 대신 flannel쓰는 게 정신상 이롭다](https://stackoverflow.com/questions/60806708/kubernetes-with-calico-on-aws-cannot-ping-pods-on-on-different-nodes)   
 참고 : [nginx-ingress 설치](https://kubernetes.github.io/ingress-nginx/deploy/#bare-metal-clusters)   
 참고 : [nginx-ingress 설치 후 ing.yml apply 시 인증에러 뜰 때](https://ikcoo.tistory.com/137)   
-
+참고 : [nginx-ingress 최신버전 example](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengsettingupingresscontroller.htm)   
 
 
 # C.F. 이 md file 의 커멘드는 indent 등의 문제가 있어 정상 실행되지 않는다. k8s 설치 흐름 보는 용도로 쓰고 실제 커멘드는 quick-install.sh 파일을 복붙해 사용하자
