@@ -1,4 +1,4 @@
-설치해야 할 사항 : kubeadm, cni, ingress-nginx (bare metal 버전의 yml 파일 다운받아 type을 LoadBalancer로 변경) ,metalLB 설치   
+설치해야 할 사항 : kubeadm, cni, ingress-nginx (bare metal 버전의 yml 파일 다운받아 type을 LoadBalancer로 변경 & ingress인증 설정 제거) ,metalLB 설치   
 1. configMap 생성 및 apply
 2. [metalLb 설치하기](https://linux.systemv.pe.kr/metallb-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/)   
 3. [metalLb 에서 할당해 줄 ip 대역 찾기 : 영상의 3:30~4:00 사이](https://www.youtube.com/watch?v=2SmYjj-GFnE)   
