@@ -8,7 +8,8 @@
 참고 : [nginx-ingress 최신버전 example](https://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengsettingupingresscontroller.htm)   
 참고 : [metalLb example... 별루임](https://www.youtube.com/watch?v=2SmYjj-GFnE)   
 참고 : helm 설치 : sudo snap install helm --classic   
-
+참고 : [helm 으로 ingress 설치 - LB 버전](https://stackoverflow.com/questions/71637344/i-cant-access-service-via-k8s-master-node)   
+   
 # C.F. 이 md file 의 커멘드는 indent 등의 문제가 있어 정상 실행되지 않는다. k8s 설치 흐름 보는 용도로 쓰고 실제 커멘드는 quick-install.sh 파일을 복붙해 사용하자
 
 # ec2
