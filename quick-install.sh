@@ -69,7 +69,8 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+// kubectl apply -f https://github.com/coreos/flannel/raw/master/Documentation/kube-flannel.yml -> flannel net 설치 (ingress 이용을 위한 설정을 모르겠음)
 
 
 # helm 으로 ingress 설치
