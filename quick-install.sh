@@ -60,8 +60,9 @@ sudo apt-get install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl 
 
 # master node 만
-sudo kubeadm init \
---pod-network-cidr=10.244.0.0/16
+sudo kubeadm init 
+// \
+// --pod-network-cidr=10.244.0.0/16
 
 mkdir -p $HOME/.kube
 
