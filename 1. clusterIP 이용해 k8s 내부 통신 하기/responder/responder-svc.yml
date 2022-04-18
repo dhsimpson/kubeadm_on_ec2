@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: responder-app
+spec:
+  selector:
+    matchLabels:
+      app: responder
+      tier: db
+  template:
+    metadata:
+      labels:
+        app: responder
+        tier: db
+    spec:
+      containers:
+        - name: responder
+          image: dhsimpson/sample-responder:linuxamd
+          ports:
+            - containerPort: 11111
+              protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: responder-svc
+spec:
+  ports:
+    - port: 11111
+      protocol: TCP
+  selector:
+    app: responder
+    tier: db
