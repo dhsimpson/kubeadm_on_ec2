@@ -15,4 +15,4 @@ spec:
     spec:
       containers:
         - name: caller
-          image: dhsimpson/sample-caller:amd
+          image: dhsimpson/sample-caller:linuxamd2
