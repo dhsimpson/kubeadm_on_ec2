@@ -5,4 +5,4 @@
 3. caller pod 에 exec -it 명령어로 접속 한 뒤 caller api 호출 (curl 127.0.0.1:12345)
 
 
-![](./실습도식.png)
+![실습도](./실습도식.png)
