@@ -1,5 +1,7 @@
 ### caller 가 responder 를 호출한다.   
-   
-1. responder pod를 11111번 포트로 오픈 (responder 컨테이너의 서버 또한 11111번 포트에서 listen)
-2. responder pod에 service를 붙임. service 종류를 명시하지 않아 default 로 clusterIP 로 생성 됨 (k8s 내부에서 동일 namespace 에서만 접근 가능)
-3. responder 는 name 이 responder 이고, 11111 번  k8s 의 동일 namespace 내에선 responder:11111
+
+1. responder-svc.yml 을 복붙 해 apply
+2. caller-svc.yml 을 복붙 해 apply
+3. caller pod 에 exec -it 명령어로 접속 한 뒤 caller api 호출 (curl 127.0.0.1:12345)
+
+
