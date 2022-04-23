@@ -21,7 +21,11 @@ exit
 </details>
 
 2. docker 설치하기
+<details>
+<summary>접기/펼치기</summary>
+<div markdown="1">
 
+```sh
 sudo apt-get update 
 
 sudo apt-get install -y \
@@ -58,10 +62,16 @@ sudo systemctl enable docker
 sudo systemctl daemon-reload 
 
 sudo systemctl restart docker 
+```
+</div>
+</details>
 
 3. k8s 설치하기 (kubectl, kubeadm, kubelet)
+<details>
+<summary>접기/펼치기</summary>
+<div markdown="1">
 
-
+```sh
 
 sudo apt-get update 
 
@@ -77,6 +87,20 @@ sudo apt-get install -y kubelet kubeadm kubectl
 
 sudo apt-mark hold kubelet kubeadm kubectl 
 
+
+```
+
+</div>
+</details>
+
+4. k8s 실행시키고 네트워크 설정 하기
+<details>
+<summary>접기/펼치기</summary>
+<div markdown="1">
+
+```sh
+
+
 ### master node 만
 sudo kubeadm init 
 
@@ -89,3 +113,9 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl versio
 ### worker node 만 (master node 에서 kubeadm init 시에 나오는 join 커멘드)
 sudo kubeadm join <master node ec2 프라이빗 ipv4 주소>:6443 --token <token값> \
 	--discovery-token-ca-cert-hash sha256:<hash값> 
+
+
+```
+
+</div>
+</details>
