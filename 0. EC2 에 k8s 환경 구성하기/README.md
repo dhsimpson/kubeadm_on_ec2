@@ -1,6 +1,10 @@
-dsdsd
-1. 우분투에서 swap 영역 사용하지 않도록 off 하기
 
+1. 우분투에서 swap 영역 사용하지 않도록 off 하기
+<details>
+<summary>접기/펼치기</summary>
+<div markdown="1">
+
+```sh
 sudo su    
 
 swapoff -a    
@@ -10,6 +14,11 @@ echo 0 > /proc/sys/vm/swappiness
 sed -e '/swap/ s/^#*/#/' -i /etc/fstab    
 
 exit    
+
+```
+
+</div>
+</details>
 
 2. docker 설치하기
 
