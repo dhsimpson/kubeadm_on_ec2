@@ -120,7 +120,7 @@ sudo kubeadm join <master node ec2 프라이빗 ipv4 주소>:6443 --token <token
 </div>
 </details>
 
-ec2에서 k8s에 사용 할 port 오픈 할 목록
+5. ec2에서 k8s에 사용 할 port 오픈 할 목록
 	
 <details>
 <summary>접기/펼치기</summary>
