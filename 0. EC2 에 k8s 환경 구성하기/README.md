@@ -120,7 +120,7 @@ sudo kubeadm join <master node ec2 프라이빗 ipv4 주소>:6443 --token <token
 </div>
 </details>
 
-5. ec2에서 k8s에 사용 할 port 오픈 할 목록
+5. ec2 인스턴스 정보 및 ec2에서 k8s에 사용 할 port 오픈 할 목록
 	
 <details>
 <summary>접기/펼치기</summary>
@@ -128,9 +128,10 @@ sudo kubeadm join <master node ec2 프라이빗 ipv4 주소>:6443 --token <token
 
 ```md
 
-# ec2
+# ec2 (최소 사양 : 램 2GB, CPU 2코어)
 ubuntu 20.04 LTS(x86) > t2.medium(spot instance)   
-security group   
+	
+# security group   
  - TCP, port : 6443 ( k8s-api server ) / for master node
  - TCP, port : 2379 - 2380 ( k8s etcd ) / for master node
  - TCP, port : 30000-32767 ( k8s service ) / for master node
