@@ -1,3 +1,4 @@
+### ArgoCD 설치하기
 1. k8s에 ArgoCD 설치 ->    kubectl create namespace argocd   
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 2. argocd-server 를 insecure 하게 만들기 (tls인증서 요구 무시) -> kubectl patch deployment -n argocd argocd-server --patch-file no-tls.yml 
@@ -8,3 +9,5 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 6. ingress-nginx 컨트롤러의 https 포트 확인 -> kubectl get svc -n ingress-nginx
 7. 웹 브라우저에 https://<argocd.example.com>:<ingress-nginx-컨트롤러의-https-포트> 로 들어가기
 8. 주의 메시지가 나온다면 무시하고 들어가기
+
+### ArgoCD 이용해 CD(지속적 배포) 하기
