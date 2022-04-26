@@ -15,3 +15,9 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 ![passwd1.png](passwd1.png) ![passwd2.png](passwd2.png)
 
 ### ArgoCD 이용해 CD(지속적 배포) 하기
+1. create app 클릭하기 ![addapp1.png](addapp1.png)
+2. application name, project 는 알아서 채워 넣기 ![addapp2.png](addapp2.png)
+3. Repository URL 은 배포 대상 yml 파일의 저장소 주소 (실습에선 https://github.com/dhsimpson/argocd_temp_repo)   
+   Revision 은 branch 로 선택한 뒤 실습 대상 레포지토리의 브랜치인 main 을 적음   
+   Path 는 배포 대상 yml 파일이 위치하는 디렉터리 경로 (실습에선 깃헙 레포의 /temptemp 디렉터리 사용할 것이므로 ./temptemp 로 함. "./" 가 깃헙 레포지토리의 root 경로)   
+   ![addapp3.png](addapp3.png)
