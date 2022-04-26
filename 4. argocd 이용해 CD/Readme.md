@@ -9,5 +9,6 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 6. ingress-nginx 컨트롤러의 https 포트 확인 -> kubectl get svc -n ingress-nginx
 7. 웹 브라우저에 https://<argocd.example.com>:<ingress-nginx-컨트롤러의-https-포트> 로 들어가기
 8. 주의 메시지가 나온다면 무시하고 들어가기
+9. 다음 명령어로 argocd 의 admin 계정 패스워드 확인하기 (id : admin) > kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 
 ### ArgoCD 이용해 CD(지속적 배포) 하기
