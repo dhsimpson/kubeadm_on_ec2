@@ -21,3 +21,6 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
    Revision 은 branch 로 선택한 뒤 실습 대상 레포지토리의 브랜치인 main 을 적음   
    Path 는 배포 대상 yml 파일이 위치하는 디렉터리 경로 (실습에선 깃헙 레포의 /temptemp 디렉터리 사용할 것이므로 ./temptemp 로 함. "./" 가 깃헙 레포지토리의 root 경로)   
    ![addapp3.png](addapp3.png)
+4. manual sync 로 셋팅돼 있으므로 sync 눌러 줘야 yml 파일 대로 apply 할 것임 ![addapp4.png](addapp4.png)
+5.  sync 완료 된 결과 ![addapp5.png](addapp5.png)
+
