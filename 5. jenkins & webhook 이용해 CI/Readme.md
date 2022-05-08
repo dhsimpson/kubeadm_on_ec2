@@ -33,5 +33,10 @@ sudo docker exec jenkins apt install -y docker.io
 5. SCM 을 Git 으로 선택
 6. Repository URL 을 예시 app 의 github url 입력
 7. Credentials > Add > Jenkins 클릭
-8. Username : 예시 app 을 가진 깃헙의 id
-9. Password : 
+Username : 예시 app 을 가진 깃헙의 id   
+Password : 위에서 생성한 깃헙의 token   
+ID : 아무거나.. (ex dhsimpson_cred)   
+11. Add 후 Credentails 에서 방금 생성 한 credential 선택
+12. Branch Specifier 에 CI 할 브랜치 명 입력 (ex */main)
+13. Apply 및 저장
+    
