@@ -19,6 +19,7 @@ sudo docker exec jenkins apt install -y docker.io
   
 ##### github webhook
 1. 예시 app 생성 => ex) [예시 app](https://github.com/dhsimpson/jenkins_test_node_app)
+예시 app 컨테이너를 업로드 할 컨테이너 허브(ex docker hub) 레포지토리가 생성돼 있어야 함   
 이 App 엔 도커 인스턴스 생성을 위한 Dockerfile 및 Jenkins pipeline을 위한 jenkins 파일이 있어야 함
 2. 예시 app 레포지토리의 settings > Webhooks > Add webhook > 의 payload url에 <ec2인스턴스의 public ip or 퍼블릭 IPv4 DNS>:8080/github-webhook/ 을 입력
 3. Content type 을 application/json 로 선택, webhook 생성
@@ -48,3 +49,32 @@ ID : 아무거나...(ex docker-hub)
 16. Build Now 클릭 (한 번은 해줘야 Webhook이 동작)
 17. 예시 app 의 코드를 수정해 webhook이 정상 동작하는 지 확인
     
+   
+Jenkins file 은 아래와 같이 작성
+'''
+node {
+    stage ('Clone repository') {
+        checkout scm
+    }
+    stage ('Build image') {
+        app = docker.build("dhsimpson/jenkins-example-node-app")
+    }
+    stage ('Push image') {
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+        }
+    }
+}
+
+stage ('Build image') {
+    app = docker.build("dhsimpson/jenkins-example-node-app")
+}
+
+stage ('Push image') {
+    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+        app.push("v1.0.${env.BUILD_NUMBER}")
+        app.push("latest")
+    }
+}
+'''
