@@ -15,6 +15,7 @@ sudo docker exec jenkins apt install -y docker.io
 12. 도커 CI 파이프라인용 플러그인 설치 => Jenkins 관리 > Plugin 관리 > 설치 가능 > docker pipeline 검색 > install without restart
   
 #### webhook 이용해 컨테이너 이미지 자동 생성
-  
-  
+1. 예시 어플리케이션 생성 => ex) [예시 app](https://github.com/dhsimpson/jenkins_test_node_app)
+이 App 엔 도커 인스턴스 생성을 위한 Dockerfile 및 Jenkins pipeline을 위한 jenkins 파일이 있어야 함
+2. 
 
