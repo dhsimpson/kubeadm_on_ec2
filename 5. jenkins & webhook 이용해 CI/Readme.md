@@ -38,7 +38,7 @@ Password : 위에서 생성한 깃헙의 token
 ID : 아무거나.. (ex dhsimpson_cred)   
 11. Add 후 Credentails 에서 방금 생성 한 credential 선택
 12. Branch Specifier 에 CI 할 브랜치 명 입력 (ex */main)
-13. Script Path 에 jenkins 입력 (예시 app 레포지토리의 jenkins 파일 경로, 대소문자 구분)
+13. Script Path 에 jenkinsfile 입력 (예시 app 레포지토리의 jenkinsfile 파일 경로, 대소문자 구분)
 13. Apply 및 저장
 14. Dashboard > Jenkins관리 > Manage Credentials
 15. Jenkins > Global credentials > 좌측의 Add Credentials
