@@ -12,6 +12,7 @@ sudo docker exec jenkins apt install -y docker.io
 9. 해당 비밀번호를 Administrator password 에 입력한다.
 10. install suggested pulgins 클릭해 플러그인 설치
 11. account 생성
+12. 도커 CI 파이프라인용 플러그인 설치 => Jenkins 관리 > Plugin 관리 > 설치 가능 > docker pipeline 검색 > install without restart
   
 #### webhook 이용해 컨테이너 이미지 자동 생성
   
