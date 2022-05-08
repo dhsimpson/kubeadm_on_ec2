@@ -51,7 +51,7 @@ ID : 아무거나...(ex docker-hub)
     
    
 Jenkins file 은 아래와 같이 작성
-'''
+```Jenkinsfile
 node {
     stage ('Clone repository') {
         checkout scm
@@ -77,4 +77,4 @@ stage ('Push image') {
         app.push("latest")
     }
 }
-'''
+```
