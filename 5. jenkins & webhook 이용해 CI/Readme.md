@@ -57,10 +57,10 @@ node {
         checkout scm
     }
     stage ('Build image') {
-        app = docker.build("dhsimpson/jenkins-example-node-app")
+        app = docker.build("dhsimpson/jenkins-example-node-app") # CI 한 컨테이너 이미지를 업로드 할 도커허브 레포지토리
     }
     stage ('Push image') {
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') { # 위에서 추가 한 docker-hub 의 credential ID
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
@@ -68,13 +68,13 @@ node {
 }
 
 stage ('Build image') {
-    app = docker.build("dhsimpson/jenkins-example-node-app")
+    app = docker.build("dhsimpson/jenkins-example-node-app") # CI 한 컨테이너 이미지를 업로드 할 도커허브 레포지토리
 }
 
 stage ('Push image') {
-    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
-        app.push("v1.0.${env.BUILD_NUMBER}")
-        app.push("latest")
+    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') { # 위에서 추가 한 docker-hub 의 credential ID
+        app.push("v1.0.${env.BUILD_NUMBER}") # env.BUILD_NUMBER 는 jenkins 의 환경 변수
+        app.push("latest") # 굳이 안 넣어도 됨
     }
 }
 ```
