@@ -22,5 +22,16 @@ sudo docker exec jenkins apt install -y docker.io
 이 App 엔 도커 인스턴스 생성을 위한 Dockerfile 및 Jenkins pipeline을 위한 jenkins 파일이 있어야 함
 2. 예시 app 레포지토리의 settings > Webhooks > Add webhook > 의 payload url에 <ec2인스턴스의 public ip or 퍼블릭 IPv4 DNS>:8080/github-webhook/ 을 입력
 3. Content type 을 application/json 로 선택, webhook 생성
+4. 깃헙 계정의 setting > 좌측하단 Developer Settings > Personal Access tokens > Generate new token
+5. Note 에 아무 이름이나 넣고 write packages 체크 > Generate token > 생성된 토큰 복사
    
 ##### Jenkins
+1. New Item 에 들어가 item name 입력 및 "Pipeline" 선택 > OK 클릭
+2. Github project 체크한 뒤 예시 app의 github url 입력
+3. GitHub hook trigger for GITScm polling 체크
+4. Pipeline 에 Definition 을 Pipeline script from SCM 로 선택
+5. SCM 을 Git 으로 선택
+6. Repository URL 을 예시 app 의 github url 입력
+7. Credentials > Add > Jenkins 클릭
+8. Username : 예시 app 을 가진 깃헙의 id
+9. Password : 
