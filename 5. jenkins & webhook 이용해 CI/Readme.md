@@ -14,8 +14,12 @@ sudo docker exec jenkins apt install -y docker.io
 11. account 생성
 12. 도커 CI 파이프라인용 플러그인 설치 => Jenkins 관리 > Plugin 관리 > 설치 가능 > docker pipeline 검색 > install without restart
   
-#### webhook 이용해 컨테이너 이미지 자동 생성
+#### Webhook 이용해 컨테이너 이미지 자동 생성   
+  
+##### github webhook
 1. 예시 app 생성 => ex) [예시 app](https://github.com/dhsimpson/jenkins_test_node_app)
 이 App 엔 도커 인스턴스 생성을 위한 Dockerfile 및 Jenkins pipeline을 위한 jenkins 파일이 있어야 함
 2. 예시 app 레포지토리의 settings > Webhooks > Add webhook > 의 payload url에 <ec2인스턴스의 public ip or 퍼블릭 IPv4 DNS>:8080/github-webhook/ 을 입력
-
+3. Content type 을 application/json 로 선택, webhook 생성
+   
+##### Jenkins
