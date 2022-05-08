@@ -45,4 +45,6 @@ ID : 아무거나.. (ex dhsimpson_cred)
 Username : 도커허브 id
 Password : 도커허브 pw
 ID : 아무거나...(ex docker-hub)
+16. Build Now 클릭 (한 번은 해줘야 Webhook이 동작)
+17. 예시 app 의 코드를 수정해 webhook이 정상 동작하는 지 확인
     
