@@ -4,7 +4,7 @@
 1. ec2 인스턴스의 인바운드 규칙을 편집해 준다 => 8080 포트 오픈
 2. 도커 설치 => sudo apt update && sudo apt install -y docker.io
 3. 젠킨스 컨테이너 띄우고 로컬의 도커를 사용하도록 연결 => sudo docker run -d -p 8080:8080 --name jenkins -v /home/jenkins:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -u root jenkins/jenkins:lts
-4. 젠킨스 컨테이너 내부에 도커를 설치해 준다 => sudo docker exec jenkins apt update 
+4. 젠킨스 컨테이너 내부에 도커를 설치해 준다 => sudo docker exec jenkins apt update   
 sudo docker exec jenkins apt install -y docker.io
 5. ec2 인스턴스의 <PublicIP>:8080 or <퍼블릭 IPv4 DNS>:8080 로 접속한다
 6. 접속했을 때 Unlock Jenkins 에 나오는 붉은 글씨(ex - sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword)에 젠킨스 비밀번호가 있다. => sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
