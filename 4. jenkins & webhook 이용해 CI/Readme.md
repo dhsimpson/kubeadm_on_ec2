@@ -26,7 +26,7 @@ sudo docker exec jenkins apt install -y docker.io
 5. Note 에 아무 이름이나 넣고 write packages 체크 > Generate token > 생성된 토큰 복사
    
 ##### Jenkins
-1. New Item 에 들어가 item name 입력 및 "Pipeline" 선택 > OK 클릭
+1. 새로운 Item 에 들어가 item name 입력 및 "Pipeline" 선택 > OK 클릭
 2. Github project 체크한 뒤 예시 app의 github url 입력
 3. GitHub hook trigger for GITScm polling 체크
 4. Pipeline 에 Definition 을 Pipeline script from SCM 로 선택
