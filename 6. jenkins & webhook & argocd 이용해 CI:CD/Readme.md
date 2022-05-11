@@ -1,3 +1,6 @@
+   
+!(cicd)[cicd.png]
+   
 1. 예시 app url : [jenkins-test-node-app](https://github.com/dhsimpson/jenkins_test_node_app)
 2. 예시 CD url : [cd-repo](https://github.com/dhsimpson/argocd_temp_repo)
 3. argocd 에서 cd-repo 의 cicd-test-app 경로에 대해 지속적 배포 수행하도록 new app 생성
