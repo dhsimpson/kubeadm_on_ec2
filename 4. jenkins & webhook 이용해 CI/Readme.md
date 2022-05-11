@@ -1,5 +1,7 @@
 ## 도커 컨테이너 이용해 설치 (도커 없이 하려면 java 부터 설치해야 할 것이 많아 귀찮다)
-    
+
+![ci jenkins](ci.png)
+
 ### Jenkins 설치
 1. ec2 인스턴스의 인바운드 규칙을 편집해 준다 => 8080 포트 오픈
 2. 도커 설치 => sudo apt update && sudo apt install -y docker.io
