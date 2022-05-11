@@ -1,6 +1,3 @@
-   
-![cd](cd.png)
-
 ### ArgoCD 설치하기
 1. k8s에 ArgoCD 설치 ->    kubectl create namespace argocd   
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
