@@ -1,5 +1,5 @@
    
-!(cicd)[cicd.png]
+![cicd](cicd.png)
    
 1. 예시 app url : [jenkins-test-node-app](https://github.com/dhsimpson/jenkins_test_node_app)
 2. 예시 CD url : [cd-repo](https://github.com/dhsimpson/argocd_temp_repo)
