@@ -1,1 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-content
+spec:
+  selector:
+    matchLabels:
+      app: board-content
+      tier: db
+  template:
+    metadata:
+      labels:
+        app: board-content
+        tier: db
+    spec:
+      containers:
+        - name: board-content
+          image: dhsimpson/board-content:latest
+          ports:
+            - containerPort: 30002
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: board-content-env
 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: board-content
+spec:
+  ports:
+    - port: 30002
+      protocol: TCP
+  selector:
+    app: board-content
+    tier: db
