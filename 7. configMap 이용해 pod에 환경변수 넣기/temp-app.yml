@@ -21,7 +21,7 @@ spec:
               protocol: TCP
           envFrom:
             - configMapRef:
-                name: board-content-env
+                name: test-env
 
 ---
 apiVersion: v1
